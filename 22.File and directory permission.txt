@@ -1,0 +1,51 @@
+#########################File and directory permission##########################
+
+Permission table:
+
+Permission		Symbolic Value		Numeric Value
+Read			r			4
+Write			w			2
+Execute			x			1
+
+Default Permission:
+File			644
+Directory               755
+
+        [root@localhost ~]# ls -lt
+        drwxr-xr-x. 2 root root     6 Dec 31 10:20 Desktop
+	|  |   | |     |    |       |
+  File Type|   | |     |    |       |
+	 Owner | |     |    |       |
+	    Group|     |   Group    Size of file
+	      Others User(Owner)
+
+Chmod Command Symbolic Permission:
+
+Symbol                     Description
+
+u                          User/Owner
+g                          Group
+o                          Others
+r                          Read
+w                          Write
+x                          Execute
++                          Allow
+
+[root@localhost ~]# ls -lt
+-rw-r--r--. 1 root root 30720 Jan  9 13:28 archive.tar
+[root@localhost ~]# chmod 766 archive.tar
+[root@localhost ~]# ls -ltr archive.tar
+-rwxrw-rw-. 1 root root 30720 Jan  9 13:28 archive.tar
+
+If you want to edit specific like user group other permission type
+[root@localhost ~]# chmod g-w archive.tar
+[root@localhost ~]# ls -ltr archive.tar
+-rwxr--rw-. 1 root root 30720 Jan  9 13:28 archive.tar
+[root@localhost ~]# chmod o-w archive.tar
+
+To change the ownership and group of file/directory
+[root@localhost ~]# chgrp server1 archive.tar
+[root@localhost ~]# ls -ltr archive.tar
+-rwxrw-rw-. 1 server1 server1 30720 Jan  9 13:28 archive.tar
+
+                          
